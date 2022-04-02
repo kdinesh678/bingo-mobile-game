@@ -5,10 +5,10 @@ and now I can play it anytime with this application.
 
 It is also deployed in playstore: https://play.google.com/store/apps/details?id=com.bingomultiplayergame
 
-<img src="./screenshots/bingo-1.png" alt="bingo-1" width="200"/>
-<img src="./screenshots/bingo-2.png" alt="bingo-2" width="200"/>
-<img src="./screenshots/bingo-3.png" alt="bingo-3" width="200"/>
-<img src="./screenshots/bingo-4.png" alt="bingo-4" width="200"/>
+<img src="./screenshots/bingo-1.png" alt="bingo-1" width="200"/> <img src="./screenshots/bingo-2.png" alt="bingo-2" width="200"/> <img src="./screenshots/bingo-3.png" alt="bingo-3" width="200"/> <img src="./screenshots/bingo-4.png" alt="bingo-4" width="200"/>
+
+
+
 
 ## Technologies
 
