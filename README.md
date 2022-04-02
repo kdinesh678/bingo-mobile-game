@@ -1,6 +1,6 @@
 # Bingo Mobile Multiplayer Game
 
-Simple Bingo game which can be played with CPU or with your friends. I used to play this game when I was in school with pen and paper with my friends
+Simple Bingo game which can be played with CPU or with your friends. I used to play this game when I was in school using pen and paper with my friends
 and now I can play it anytime with this application.
 
 It is also deployed in playstore: https://play.google.com/store/apps/details?id=com.bingomultiplayergame
