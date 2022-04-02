@@ -1,7 +1,7 @@
 import React, {useCallback, useMemo} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Text, Button} from 'native-base';
-import {NEW, READY, STARTED} from '../../redux/constants';
+import {COMPLETED, NEW, READY, STARTED} from '../../redux/constants';
 import {CellSize, fontSize} from '../../dimensions';
 import {useAppSelector} from '../../redux/reducers/hooks';
 import {useDispatch} from 'react-redux';
@@ -73,6 +73,9 @@ export default function PlayActions(props: props) {
       ) : null}
       {gameStatus === READY ? (
         <Text style={styles.gameStatus}>READY</Text>
+      ) : null}
+      {gameStatus === COMPLETED ? (
+        <Text style={styles.gameStatus}>Game Over</Text>
       ) : null}
     </View>
   );

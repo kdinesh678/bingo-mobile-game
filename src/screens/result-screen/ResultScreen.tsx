@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useRef} from 'react';
 import {View, StyleSheet, BackHandler} from 'react-native';
 import {Container, Button, Text} from 'native-base';
 import {useDispatch} from 'react-redux';
@@ -15,6 +15,7 @@ const lostAnimation = require('../../assets/animations/lottie/lost-sad-star.json
 export default function Result(props: ResultScreenProps) {
   const {navigation} = props;
   const dispatch = useDispatch();
+  const animation = useRef<LottieView>(null);
 
   const winnerId = useAppSelector(state => state.game.gameWinner);
   const userId = useAppSelector(state => state.player.id);
@@ -33,6 +34,10 @@ export default function Result(props: ResultScreenProps) {
       },
     );
 
+    if (animation.current) {
+      animation.current.play();
+    }
+
     return () => backHandler.remove();
   }, [navigation]);
 
@@ -47,15 +52,13 @@ export default function Result(props: ResultScreenProps) {
         {winnerId === userId ? (
           <LottieView
             source={winnerAnimation}
-            autoPlay
-            loop={false}
+            ref={animation}
             style={{width: 250}}
           />
         ) : (
           <LottieView
             source={lostAnimation}
-            autoPlay
-            loop={false}
+            ref={animation}
             style={{width: 250}}
           />
         )}
