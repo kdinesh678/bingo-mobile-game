@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
+import {GAME_STATUS} from '../../redux/constants';
 import {getJoinLineDirection} from '../../redux/utils';
 import Cell from './cell';
 
@@ -8,6 +9,7 @@ type props = {
   onSelect?: (number: number, position: number) => void;
   numbersSelected: number[];
   sequencesFormed: Set<number>[];
+  gameStatus: GAME_STATUS;
 };
 
 export default function BingoGrid(props: props) {
@@ -16,6 +18,7 @@ export default function BingoGrid(props: props) {
     onSelect = () => {},
     numbersSelected = [],
     sequencesFormed,
+    gameStatus,
   } = props;
 
   const lineDirections = getJoinLineDirection(numbers, sequencesFormed);
@@ -30,6 +33,7 @@ export default function BingoGrid(props: props) {
           onPress={onSelect}
           isSelected={numbersSelected.includes(number)}
           lineDirection={lineDirections[index]}
+          gameStatus={gameStatus}
         />
       ))}
     </View>

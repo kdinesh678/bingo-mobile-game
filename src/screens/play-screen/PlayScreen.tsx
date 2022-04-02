@@ -70,7 +70,9 @@ export default function PlayScreen(props: PlayScreenProps) {
     );
 
     if (gameStatus === COMPLETED) {
-      navigation.navigate('result');
+      setTimeout(() => {
+        navigation.navigate('result');
+      }, 1000);
     }
 
     return () => backHandler.remove();
@@ -89,7 +91,7 @@ export default function PlayScreen(props: PlayScreenProps) {
     (number: number, position: number) => {
       if (gameStatus === NEW) {
         dispatch(fillManualNumber(position));
-      } else {
+      } else if (gameStatus === STARTED) {
         if (lastPlayedBy !== playerId) {
           dispatch(selectNumber({number, playedBy: playerId as string}));
           if (gameSound) {
@@ -125,6 +127,7 @@ export default function PlayScreen(props: PlayScreenProps) {
               numbersSelected={numbersSelected}
               onSelect={onNumberSelect}
               sequencesFormed={sequencesFormed}
+              gameStatus={gameStatus}
             />
           </Row>
           <Row size={1} style={styles.actionRow}>
@@ -140,6 +143,7 @@ export default function PlayScreen(props: PlayScreenProps) {
               numbers={opponentBoardNUmbers}
               numbersSelected={numbersSelected}
               lastPlayedBy={lastPlayedBy}
+              gameStatus={gameStatus}
             />
           ) : null}
         </Grid>

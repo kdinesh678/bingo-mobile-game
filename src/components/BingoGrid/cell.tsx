@@ -8,6 +8,7 @@ import {
 } from '../../dimensions';
 
 import {Text, View} from 'react-native-animatable';
+import {GAME_STATUS, STARTED} from '../../redux/constants';
 
 type props = {
   number: number;
@@ -15,6 +16,7 @@ type props = {
   isSelected: boolean;
   onPress: (number: number, position: number) => void;
   lineDirection: string[];
+  gameStatus: GAME_STATUS;
 };
 
 const styleValue: Record<string, any> = {
@@ -32,7 +34,14 @@ const styleValue: Record<string, any> = {
 };
 
 export default function Cell(props: props) {
-  const {number, onPress, position, isSelected, lineDirection = []} = props;
+  const {
+    number,
+    onPress,
+    position,
+    isSelected,
+    lineDirection = [],
+    gameStatus,
+  } = props;
 
   const textRefEl = useRef(null);
 
@@ -68,7 +77,10 @@ export default function Cell(props: props) {
   }, [onPress, number, position]);
 
   return (
-    <TouchableHighlight onPress={onPressCallback} style={cellWrapperStyle}>
+    <TouchableHighlight
+      onPress={onPressCallback}
+      style={cellWrapperStyle}
+      disabled={Boolean(number) && gameStatus !== STARTED}>
       <>
         <Text useNativeDriver={true} style={textStyle} ref={textRefEl}>
           {number || ''}

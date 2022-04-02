@@ -12,6 +12,7 @@ export default function GameTypeScreen(props: GameTypeScreenProps) {
   const {navigation} = props;
 
   const playerId = useAppSelector(state => state.player.id) as string;
+  const remoteIdSet = useAppSelector(state => state.player.remoteIdSet);
 
   const dispatch = useDispatch();
 
@@ -61,7 +62,7 @@ export default function GameTypeScreen(props: GameTypeScreenProps) {
           rounded
           bordered
           block
-          disabled={!playerId}
+          disabled={!remoteIdSet}
           onPress={startMultiPlayerGame}>
           <Text>Play with friends</Text>
         </Button>
